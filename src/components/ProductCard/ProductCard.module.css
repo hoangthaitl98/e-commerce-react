@@ -1,0 +1,14 @@
+/*.productLink{*/
+/*    text-decoration: none !important;*/
+/*}*/
+
+.productCard{
+    margin: 1em;
+    padding: 2px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.productImg{
+    width: 100%;
+}
