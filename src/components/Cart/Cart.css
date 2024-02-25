@@ -1,0 +1,8 @@
+.cart {
+  max-width: 20rem;
+}
+
+.cart-products {
+  height: 10rem;
+  overflow: scroll;
+}

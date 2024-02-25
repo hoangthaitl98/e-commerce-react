@@ -1,0 +1,26 @@
+.product-list {
+  margin-top: 5em;
+}
+
+#btn {
+  color: #ffd525;
+  background-color: #2c388a;
+  border-radius: 0;
+  padding: 14px 28px;
+  margin: 2rem 0;
+}
+
+.product-list-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-list-title {
+  color: darkblue;
+  text-align: center;
+}
+
+.product-list-title:hover {
+  color: #ffcc00;
+}
