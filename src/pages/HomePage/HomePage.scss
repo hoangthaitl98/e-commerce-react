@@ -1,0 +1,21 @@
+.product-list{
+    margin-top: 5em;
+    .content{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .title{
+        color: darkblue;
+        text-align: center;
+    }
+    .title:hover{
+        color: #ffcc00;
+    }
+}
+
+
+
+
+
+

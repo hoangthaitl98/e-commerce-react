@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const CartContext = React.createContext({
   products: [],
   total: 0,
+  open: false,
   addProduct: (product) => {},
   deleteProduct: (id) => {},
   clearCart: () => {},
@@ -11,6 +12,7 @@ const CartContext = React.createContext({
 export const CartProvider = (props) => {
   const [products, setProducts] = useState([]);
   const [total, setTotal] = useState(0);
+  const [open, setOpen] = useState(false);
 
   const addProduct = (product) => {
     setTotal(total + +product.price * product.amount);
@@ -75,12 +77,22 @@ export const CartProvider = (props) => {
   //     }
   // }
 
+  const openCart = () => {
+    setOpen(true);
+  };
+  const closeCart = () => {
+    setOpen(false);
+  };
+
   const data = {
-    products: products,
-    total: total,
-    addProduct: addProduct,
-    increaseAmount: increaseAmount,
+    products,
+    total,
+    open,
+    addProduct,
+    increaseAmount,
     decreaseAmount: deleteProduct,
+    openCart,
+    closeCart,
   };
 
   return (

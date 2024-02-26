@@ -1,6 +1,8 @@
 import Slider from "../../components/Slider/Slider";
-import Products from "../../components/Products/Products";
 import { Fragment } from "react";
+import { Container, Grid, Typography } from "@mui/material";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import "./HomePage.scss";
 
 function HomePage(props) {
   const { products, categories } = props;
@@ -9,12 +11,22 @@ function HomePage(props) {
     <Fragment>
       <Slider></Slider>
       {categories.map((category) => (
-        <Products
-          key={category}
-          category={category}
-          products={products}
-          categories={categories}
-        ></Products>
+        <Container className={"product-list"}>
+          <Typography className={"title"} variant="h5">
+            <b>{category.name.toUpperCase()}</b>
+          </Typography>
+          <Grid container className={"content"}>
+            {products.map((product) => {
+              if (product.category.id === category.id)
+                return (
+                  <Grid key={product.id} item md={3}>
+                    <ProductCard product={product} />
+                  </Grid>
+                );
+              return <></>;
+            })}
+          </Grid>
+        </Container>
       ))}
     </Fragment>
   );
