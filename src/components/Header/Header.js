@@ -41,8 +41,9 @@ function Header(props) {
           </Grid>
           <Grid item md={4} xs={6}>
             <div className={"cart-button"} onClick={props.onShowCart}>
+              Giỏ hàng
               <ShoppingCartCheckoutOutlined />
-              Giỏ hàng ({numberOfProduct})
+              <div className="cart-badge">{numberOfProduct}</div>
             </div>
           </Grid>
         </Grid>

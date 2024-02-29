@@ -11,7 +11,7 @@ function HomePage(props) {
     <Fragment>
       <Slider></Slider>
       {categories.map((category) => (
-        <Container className={"product-list"}>
+        <Container key={category.id} className={"product-list"}>
           <Typography className={"title"} variant="h5">
             <b>{category.name.toUpperCase()}</b>
           </Typography>

@@ -1,6 +1,6 @@
-import { Card, CardContent, Typography } from "@mui/material";
-import classes from "./ProductCard.module.css";
+import { Card, CardContent } from "@mui/material";
 import { Link } from "react-router-dom";
+import "./ProductCard.scss";
 
 function ProductCard(props) {
   const { product } = props;
@@ -9,11 +9,24 @@ function ProductCard(props) {
       style={{ textDecoration: "none" }}
       to={{ pathname: `/detail/${product.id}`, state: product }}
     >
-      <Card className={classes.productCard}>
-        <CardContent>
-          <img className={classes.productImg} src={product.imgLink} alt="" />
-          <Typography>{product.name.toUpperCase()}</Typography>
-          <Typography style={{ color: "red" }}>{product.price}đ</Typography>
+      <Card className={"product-card"}>
+        <CardContent className="content">
+          <img
+            className="product-img"
+            src={product.imgLink}
+            alt={product.name}
+          />
+          <img
+            className="product-img-after"
+            src={
+              product?.images[0]?.url
+                ? product?.images[0]?.url
+                : product.imgLink
+            }
+            alt={product.name}
+          />
+          <h5 className="product-title">{product.name.toUpperCase()}</h5>
+          <h6 className="product-price">{product.price}đ</h6>
         </CardContent>
       </Card>
     </Link>

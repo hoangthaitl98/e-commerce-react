@@ -10,6 +10,8 @@ import { useLocation } from "react-router-dom";
 import { useContext, useState } from "react";
 import CartContext from "../../context/CartContext";
 import "./DetailPage.scss";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 function DetailPage(props) {
   const data = useLocation();
@@ -17,6 +19,24 @@ function DetailPage(props) {
 
   const [amountInput, setAmountInput] = useState(1);
   const ctx = useContext(CartContext);
+
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1, // optional, default to 1.
+    },
+  };
 
   const amountChangeHandler = (event) => {
     setAmountInput(event.target.value);
@@ -40,6 +60,29 @@ function DetailPage(props) {
       <Grid container spacing={2}>
         <Grid item md={6} xs={12}>
           <img className={"detail-form-image"} src={product.imgLink} alt="" />
+          <Carousel responsive={responsive}>
+            {product.images.map((img) => (
+              <div
+                key={img.id}
+                style={{
+                  maxWidth: "100px",
+                  maxHeight: "100px",
+                  margin: "5px",
+                  padding: "5px",
+                  border: "1px solid #e6e6e6",
+                }}
+              >
+                <img
+                  style={{
+                    width: "100%",
+                    objectFit: "contain",
+                  }}
+                  src={img.url}
+                  alt=""
+                />
+              </div>
+            ))}
+          </Carousel>
         </Grid>
         <Grid item md={6} xs={12}>
           <FormControl>
@@ -70,7 +113,7 @@ function DetailPage(props) {
                 <Button
                   style={{
                     padding: "1em 5em",
-                    backgroundColor: "darkblue",
+                    backgroundColor: "#2c388a",
                     borderRadius: "0",
                   }}
                   variant="contained"
