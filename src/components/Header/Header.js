@@ -1,17 +1,12 @@
+import { Container, Divider, Grid, Stack, Typography } from "@mui/material";
 import {
-  Button,
-  Container,
-  Divider,
-  Grid,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
-import classes from "./Header.module.css";
-import { ShoppingCartCheckoutOutlined } from "@mui/icons-material";
+  ShoppingCartCheckoutOutlined,
+  SearchOutlined,
+} from "@mui/icons-material";
 import { useContext } from "react";
 import CartContext from "../../context/CartContext";
 import { Link } from "react-router-dom";
+import "./Header.scss";
 
 function Header(props) {
   const cartCtx = useContext(CartContext);
@@ -22,7 +17,7 @@ function Header(props) {
   const categories = props.categories;
 
   return (
-    <div className={classes.header}>
+    <div className={"header"}>
       <Container>
         <Grid
           container
@@ -37,36 +32,31 @@ function Header(props) {
             ></img>
           </Grid>
           <Grid item md={4} xs={6}>
-            <TextField
-              size="small"
-              fullWidth
-              placeholder="search"
-              variant="outlined"
-            ></TextField>
+            <input className="input-search" placeholder="Tìm kiếm" />
+            <span>
+              <button className="search-btn">
+                <SearchOutlined className="search-icon"></SearchOutlined>
+              </button>
+            </span>
           </Grid>
           <Grid item md={4} xs={6}>
-            <Button
-              className={classes.cartButton}
-              variant="outlined"
-              onClick={props.onShowCart}
-            >
+            <div className={"cart-button"} onClick={props.onShowCart}>
               <ShoppingCartCheckoutOutlined />
               Giỏ hàng ({numberOfProduct})
-            </Button>
+            </div>
           </Grid>
         </Grid>
         <Divider />
-        <Stack className={classes.routeList} direction="row" spacing={5}>
-          <Link style={{ textDecoration: "none" }} to={{ pathname: `/` }}>
-            <Typography variant="body1">TRANG CHỦ</Typography>
+        <Stack className={"route-list"} direction="row" spacing={5}>
+          <Link to={{ pathname: `/` }}>
+            <Typography className="route-title">TRANG CHỦ</Typography>
           </Link>
           {categories.map((category) => (
             <Link
               key={category.id}
-              style={{ textDecoration: "none" }}
               to={{ pathname: `/products/${category.name}`, state: category }}
             >
-              <Typography variant="body1">
+              <Typography className="route-title">
                 {category.name.toUpperCase()}
               </Typography>
             </Link>
