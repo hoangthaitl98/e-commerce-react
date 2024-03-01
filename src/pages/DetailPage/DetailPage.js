@@ -1,23 +1,21 @@
-import {
-  Button,
-  Container,
-  FormControl,
-  Grid,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Container, Grid, TextField } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { useContext, useState } from "react";
 import CartContext from "../../context/CartContext";
 import "./DetailPage.scss";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import ThemeButton from "../../components/Button/Button";
+import { sizes } from "../../asset/Size";
+import SelectImg from "../../asset/images/select-pro.png";
+import PolicyImg from "../../asset/images/policy_image.svg";
 
 function DetailPage(props) {
   const data = useLocation();
   const product = data.state;
 
   const [amountInput, setAmountInput] = useState(1);
+  const [activeId, setActiveId] = useState();
   const ctx = useContext(CartContext);
 
   const responsive = {
@@ -85,20 +83,36 @@ function DetailPage(props) {
           </Carousel>
         </Grid>
         <Grid item md={6} xs={12}>
-          <FormControl>
-            <Grid container rowSpacing={2}>
-              <Grid item md={12} xs={12}>
-                <Typography variant="h5">
-                  {product.name.toUpperCase()}
-                </Typography>
-              </Grid>
-              <Grid item md={12} xs={12}>
-                <Typography variant="h6">{product.price}đ</Typography>
-              </Grid>
+          <Grid container rowSpacing={2}>
+            <Grid className="info-item" item md={12} xs={12}>
+              <h2>{product.name.toUpperCase()}</h2>
+            </Grid>
+            <Grid className="info-item" item md={12} xs={12}>
+              <h2>{product.price}đ</h2>
+            </Grid>
+            <Grid className="info-item" item md={12}>
+              <div style={{ fontWeight: "500", textAlign: "left" }}>
+                Tình trạng: <span style={{ color: "#ffd525" }}>Còn hàng</span>{" "}
+              </div>
+            </Grid>
+            <Grid item lg={12} className="info-item size">
+              <div>Kích thước: </div>
+              {sizes.map((size) => (
+                <div
+                  key={size.id}
+                  className={
+                    activeId === size.id ? "size-item active" : "size-item"
+                  }
+                  onClick={() => setActiveId(size.id)}
+                >
+                  {size.name}
+                  {activeId === size.id && <img src={SelectImg} alt="" />}
+                </div>
+              ))}
+            </Grid>
+            <Grid className="info-item quantity" item lg={12}>
               <Grid item md={2}>
-                <Typography style={{ textAlign: "left" }} variant="h6">
-                  Số lượng
-                </Typography>
+                <div style={{ textAlign: "left" }}>Số lượng:</div>
               </Grid>
               <Grid item md={6}>
                 <TextField
@@ -106,24 +120,32 @@ function DetailPage(props) {
                   type="number"
                   value={amountInput}
                   onChange={amountChangeHandler}
-                  min="1"
+                  min={1}
                 />
               </Grid>
-              <Grid item md={12}>
-                <Button
-                  style={{
-                    padding: "1em 5em",
-                    backgroundColor: "#2c388a",
-                    borderRadius: "0",
-                  }}
-                  variant="contained"
-                  onClick={addProductToCart}
-                >
-                  Mua ngay với giá {product.price}đ
-                </Button>
-              </Grid>
             </Grid>
-          </FormControl>
+
+            <Grid item md={12} className="info-item">
+              <div style={{ fontWeight: "500", textAlign: "left" }}>
+                Gọi đặt mua: <span style={{ color: "red" }}>0826137137</span>{" "}
+              </div>
+            </Grid>
+            <Grid item md={12}>
+              <ThemeButton className="btn-order" onClick={addProductToCart}>
+                <div className="btn-title">
+                  Mua ngay với giá {product.price}đ
+                </div>
+                <div className="btn-sub-title">Đặt mua giao hàng tận nơi</div>
+              </ThemeButton>
+            </Grid>
+            <Grid item md={12} className="info-item">
+              <img style={{ height: "35px" }} src={PolicyImg} alt="" />
+              <div style={{ fontWeight: "500", textAlign: "left" }}>
+                CAM KẾT{" "}
+                <span style={{ fontWeight: "bold" }}>100% CHÍNH HÃNG</span>{" "}
+              </div>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Container>

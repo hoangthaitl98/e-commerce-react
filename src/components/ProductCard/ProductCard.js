@@ -7,7 +7,7 @@ function ProductCard(props) {
   return (
     <Link
       style={{ textDecoration: "none" }}
-      to={{ pathname: `/detail/${product.id}`, state: product }}
+      to={{ pathname: `/detail/${product.name}`, state: product }}
     >
       <Card className={"product-card"}>
         <CardContent className="content">

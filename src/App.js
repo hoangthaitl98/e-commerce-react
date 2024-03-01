@@ -46,7 +46,7 @@ function App() {
               categories={categories}
             ></ProductPage>
           </Route>
-          <Route path="/detail/:id" exact>
+          <Route path="/detail/:name" exact>
             <DetailPage onShowCart={showCartHandler}></DetailPage>
           </Route>
           <Route path="/order">

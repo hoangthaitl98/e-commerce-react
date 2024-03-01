@@ -1,4 +1,6 @@
-const Button = (props) => {
+import "./Button.scss";
+
+const ThemeButton = (props) => {
   const { children, style, onClick, className } = props;
   return (
     <button
@@ -12,4 +14,4 @@ const Button = (props) => {
   );
 };
 
-export default Button;
+export default ThemeButton;
