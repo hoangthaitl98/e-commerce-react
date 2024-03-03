@@ -1,6 +1,4 @@
 import {
-  Box,
-  Button,
   Divider,
   Modal,
   Stack,
@@ -10,14 +8,14 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
 } from "@mui/material";
-import classes from "./Cart.module.css";
+import "./Cart.scss";
 import { useContext } from "react";
 import CartContext from "../../context/CartContext";
 import CartItem from "../CartItem/CartItem";
 import { Link } from "react-router-dom";
 import { KeyboardArrowLeft } from "@mui/icons-material";
+import ThemeButton from "../Button/Button";
 
 function Cart(props) {
   const cartCtx = useContext(CartContext);
@@ -39,11 +37,13 @@ function Cart(props) {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <Box className={classes.cart}>
-        <Typography variant="h6">Giỏ hàng của bạn</Typography>
-        <Divider />
+      <div className={"cart"}>
+        <div>
+          <h3>Giỏ hàng của bạn</h3>
+          <Divider />
+        </div>
         {products.length === 0 && (
-          <Typography variant="body1">Giỏ hàng của bạn đang trống</Typography>
+          <div style={{ textAlign: "center" }}>Giỏ hàng của bạn đang trống</div>
         )}
         {products.length !== 0 && (
           <TableContainer sx={{ maxHeight: 300 }}>
@@ -53,6 +53,7 @@ function Cart(props) {
                   <TableCell align="center">Sản phẩm</TableCell>
                   <TableCell align="center">Đơn giá</TableCell>
                   <TableCell align="center">Số lượng</TableCell>
+                  <TableCell align="center">Thành tiền</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -66,14 +67,6 @@ function Cart(props) {
                 ))}
               </TableBody>
             </Table>
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              alignItems="center"
-            >
-              <Typography variant="h5">Tổng: </Typography>
-              <Typography variant="h5">{cartCtx.total}.000đ </Typography>
-            </Stack>
           </TableContainer>
         )}
 
@@ -82,10 +75,14 @@ function Cart(props) {
           justifyContent="space-between"
           alignItems="center"
         >
-          <Button onClick={props.onClose}>
+          <div className="exit-btn">
             <KeyboardArrowLeft />
-            Tiếp tục mua hàng
-          </Button>
+            <h4>Tiếp tục mua hàng</h4>
+          </div>
+          <h4>Tổng: {cartCtx.total}.000đ </h4>
+        </Stack>
+
+        <div>
           {products.length !== 0 && (
             <Link
               to={{
@@ -96,13 +93,13 @@ function Cart(props) {
                 },
               }}
             >
-              <Button onClick={props.onClose} variant="contained">
-                Đặt hàng
-              </Button>
+              <ThemeButton onClick={props.onClose} style={{ width: "100%" }}>
+                Thanh toán đơn hàng
+              </ThemeButton>
             </Link>
           )}
-        </Stack>
-      </Box>
+        </div>
+      </div>
     </Modal>
   );
 }

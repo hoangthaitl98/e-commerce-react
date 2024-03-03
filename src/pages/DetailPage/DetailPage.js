@@ -1,4 +1,4 @@
-import { Container, Grid, TextField } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import { useContext, useState } from "react";
 import CartContext from "../../context/CartContext";
@@ -9,6 +9,7 @@ import ThemeButton from "../../components/Button/Button";
 import { sizes } from "../../asset/Size";
 import SelectImg from "../../asset/images/select-pro.png";
 import PolicyImg from "../../asset/images/policy_image.svg";
+import { Add, Remove } from "@mui/icons-material";
 
 function DetailPage(props) {
   const data = useLocation();
@@ -36,10 +37,6 @@ function DetailPage(props) {
     },
   };
 
-  const amountChangeHandler = (event) => {
-    setAmountInput(event.target.value);
-  };
-
   const addProductToCart = (event) => {
     event.preventDefault();
     const amount = amountInput;
@@ -51,6 +48,16 @@ function DetailPage(props) {
       price: product.price,
     });
     props.onShowCart();
+  };
+
+  const increaseAmount = () => {
+    setAmountInput((prev) => prev + 1);
+  };
+
+  const decreaseAmount = () => {
+    if (amountInput > 1) {
+      setAmountInput((prev) => prev - 1);
+    }
   };
 
   return (
@@ -115,13 +122,15 @@ function DetailPage(props) {
                 <div style={{ textAlign: "left" }}>Số lượng:</div>
               </Grid>
               <Grid item md={6}>
-                <TextField
-                  size="small"
-                  type="number"
-                  value={amountInput}
-                  onChange={amountChangeHandler}
-                  min={1}
-                />
+                <div className="quantity-input">
+                  <div className="quantity-button" onClick={decreaseAmount}>
+                    <Remove className="quantity-icon" />
+                  </div>
+                  <div className="quantity-value">{amountInput}</div>
+                  <div className="quantity-button" onClick={increaseAmount}>
+                    <Add className="quantity-icon" />
+                  </div>
+                </div>
               </Grid>
             </Grid>
 

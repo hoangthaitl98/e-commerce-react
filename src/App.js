@@ -28,9 +28,8 @@ function App() {
   return (
     <Fragment>
       <CartProvider>
-        {cartIsShow && (
-          <Cart open={cartIsShow} onClose={hideCartHandler}></Cart>
-        )}
+        <Cart open={cartIsShow} onClose={hideCartHandler}></Cart>
+
         <Header
           products={products}
           categories={categories}

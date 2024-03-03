@@ -1,5 +1,5 @@
 import Carousel from "react-material-ui-carousel";
-import classes from "./Slider.module.css";
+import "./Slider.scss";
 
 function Slider() {
   const items = [
@@ -11,7 +11,9 @@ function Slider() {
   return (
     <Carousel>
       {items.map((item) => (
-        <img key={item} className={classes.banner} src={item} alt="" />
+        <div className={"banner"}>
+          <img key={item} src={item} alt="" />
+        </div>
       ))}
     </Carousel>
   );

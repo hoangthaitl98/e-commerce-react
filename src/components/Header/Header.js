@@ -1,4 +1,4 @@
-import { Container, Divider, Grid, Stack, Typography } from "@mui/material";
+import { Container, Divider, Grid, Stack } from "@mui/material";
 import {
   ShoppingCartCheckoutOutlined,
   SearchOutlined,
@@ -42,7 +42,7 @@ function Header(props) {
           <Grid item md={4} xs={6}>
             <div className={"cart-button"} onClick={props.onShowCart}>
               Giỏ hàng
-              <ShoppingCartCheckoutOutlined />
+              <ShoppingCartCheckoutOutlined style={{ fontSize: "18px" }} />
               <div className="cart-badge">{numberOfProduct}</div>
             </div>
           </Grid>
@@ -50,16 +50,14 @@ function Header(props) {
         <Divider />
         <Stack className={"route-list"} direction="row" spacing={5}>
           <Link to={{ pathname: `/` }}>
-            <Typography className="route-title">TRANG CHỦ</Typography>
+            <h3 className="route-title">TRANG CHỦ</h3>
           </Link>
           {categories.map((category) => (
             <Link
               key={category.id}
               to={{ pathname: `/products/${category.name}`, state: category }}
             >
-              <Typography className="route-title">
-                {category.name.toUpperCase()}
-              </Typography>
+              <h3 className="route-title">{category.name.toUpperCase()}</h3>
             </Link>
           ))}
         </Stack>

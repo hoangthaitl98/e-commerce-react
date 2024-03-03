@@ -1,13 +1,5 @@
-import {
-  Button,
-  Grid,
-  Stack,
-  TableCell,
-  TableRow,
-  TextField,
-  Typography,
-} from "@mui/material";
-import classes from "./CartItem.module.css";
+import { Grid, TableCell, TableRow } from "@mui/material";
+import "./CartItem.scss";
 import { Add, Remove } from "@mui/icons-material";
 
 function CartItem(props) {
@@ -18,7 +10,7 @@ function CartItem(props) {
       <TableCell>
         <Grid container>
           <Grid item md={2}>
-            <img className={classes.cartItemImg} src={product.imgLink} alt="" />
+            <img className="cart-item-img" src={product.imgLink} alt="" />
           </Grid>
           <Grid item md={10}>
             {product.name}
@@ -27,16 +19,17 @@ function CartItem(props) {
       </TableCell>
       <TableCell>{product.price}</TableCell>
       <TableCell>
-        <Stack className={classes.cartItemAction} direction="row" spacing={1}>
-          <Button onClick={props.onRemove}>
-            <Remove />
-          </Button>
-          <Typography>{product.amount}</Typography>
-          <Button onClick={props.onAdd}>
-            <Add />
-          </Button>
-        </Stack>
+        <div className="cart-item-action">
+          <div className="action-button" onClick={props.onRemove}>
+            <Remove className="action-icon" />
+          </div>
+          <div className="amount">{product.amount}</div>
+          <div className="action-button" onClick={props.onAdd}>
+            <Add className="action-icon" />
+          </div>
+        </div>
       </TableCell>
+      <TableCell>{product.price * product.amount}.000đ</TableCell>
     </TableRow>
   );
 }
