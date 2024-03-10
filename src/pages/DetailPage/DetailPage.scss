@@ -1,8 +1,46 @@
+.breadcrums {
+  margin: 8px 0 !important;
+  a {
+    text-decoration: none;
+  }
+  .breadcrumbs-title {
+    color: #000;
+    margin: 0;
+    text-decoration: none;
+  }
+  .breadcrumbs-title:hover {
+    color: #ffd525;
+  }
+}
+
 .detail-form {
   margin-top: 5em;
-  .detail-form-image {
-    width: 100%;
-    object-fit: contain;
+  .avatar-image {
+    display: flex;
+    justify-content: center;
+    .detail-form-image {
+      max-width: 480px;
+      object-fit: contain;
+    }
+  }
+  .carousel-item {
+    cursor: pointer;
+    max-width: 100px;
+    max-height: 100px;
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+  .carousel-item:hover {
+    border: 1px solid #ffd525;
+  }
+  .selected {
+    border: 1px solid #1c1c1c;
   }
   .info-item {
     padding: 0;

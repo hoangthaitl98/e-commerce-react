@@ -1,5 +1,5 @@
-import { Grid, Typography } from "@mui/material";
-import "./OrderItem.css";
+import { Grid } from "@mui/material";
+import "./OrderItem.scss";
 
 function OrderItem(props) {
   return (
@@ -8,15 +8,13 @@ function OrderItem(props) {
         <img className="order-item-img" src={props.product.imgLink} alt="" />
       </Grid>
       <Grid item md={6} xs={6}>
-        <Typography variant="body2">{props.product.name}</Typography>
+        <div>{props.product.name}</div>
       </Grid>
       <Grid item md={2} xs={2}>
-        <Typography variant="body2"> x{props.product.amount}</Typography>
+        <div> x{props.product.amount}</div>
       </Grid>
       <Grid item md={2} xs={2}>
-        <Typography variant="body2">
-          {props.product.price * props.product.amount}.000
-        </Typography>
+        <div>{props.product.price * props.product.amount}.000</div>
       </Grid>
     </Grid>
   );

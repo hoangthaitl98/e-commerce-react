@@ -4,9 +4,9 @@ import {
   Divider,
   FormControl,
   Grid,
+  Select,
   Stack,
   TextField,
-  Typography,
 } from "@mui/material";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
@@ -37,7 +37,7 @@ function OrderPage() {
       <FormControl className="order-form">
         <Grid container spacing={2}>
           <Grid item md={7} className="order-form-info">
-            <Typography variant="h5">Thông tin nhận hàng</Typography>
+            <h3>Thông tin nhận hàng</h3>
             <TextField
               name="email"
               value={inputInfo.email}
@@ -62,6 +62,9 @@ function OrderPage() {
               className="order-info-form-input"
               onChange={inputInfoHandler}
             />
+            <Select className="order-info-form-input" size="small" />
+            <Select className="order-info-form-input" size="small" />
+            <Select className="order-info-form-input" size="small" />
             <TextField
               name="address"
               value={inputInfo.address}
@@ -72,13 +75,27 @@ function OrderPage() {
             />
           </Grid>
           <Grid item md={5} className="order-product-list">
-            <Typography variant="h5">Đơn hàng</Typography>
+            <h3>Đơn hàng</h3>
             <Divider />
             {productsInCart.map((product) => (
               <OrderItem key={product.id} product={product} total={total} />
             ))}
             <Divider />
-            <Typography variant="h6">Tổng cộng: {total}.000</Typography>
+            <div className="bill-container">
+              <div className="bill-item">
+                <h4>Tạm tính:</h4>
+                <div>{total}.000</div>
+              </div>
+              <div className="bill-item">
+                <h4>Phí vận chuyển:</h4>
+                <div>25.000</div>
+              </div>
+              <Divider />
+              <div className="bill-item">
+                <h4>Tổng cộng:</h4>
+                <div>{total + 25}.000</div>
+              </div>
+            </div>
           </Grid>
           <Grid item md={12}>
             <Stack
@@ -87,7 +104,6 @@ function OrderPage() {
               alignItems="center"
             >
               <Button>
-                {" "}
                 <KeyboardArrowLeft />
                 Tiếp tục mua hàng
               </Button>
