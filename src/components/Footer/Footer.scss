@@ -1,0 +1,26 @@
+.footer {
+  width: 100%;
+  margin-top: 5em;
+  padding-top: 2em;
+  background-color: #f9f9f9;
+  .footer-list-item {
+    padding-left: 0 !important;
+  }
+  .social-media {
+    display: flex;
+    gap: 4px;
+    img {
+      height: 30px;
+    }
+  }
+}
+
+.payment {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  img {
+    height: 30px;
+  }
+}

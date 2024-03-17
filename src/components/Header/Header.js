@@ -3,12 +3,14 @@ import {
   ShoppingCartCheckoutOutlined,
   SearchOutlined,
 } from "@mui/icons-material";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import CartContext from "../../context/CartContext";
 import { Link } from "react-router-dom";
 import "./Header.scss";
 
 function Header(props) {
+  const [activeRoute, setActiveRoute] = useState(0);
+
   const cartCtx = useContext(CartContext);
   const numberOfProduct = cartCtx.products.reduce((curNumber, product) => {
     return curNumber + +product.amount;
@@ -50,14 +52,28 @@ function Header(props) {
         <Divider />
         <Stack className={"route-list"} direction="row" spacing={5}>
           <Link to={{ pathname: `/` }}>
-            <h3 className="route-title">TRANG CHỦ</h3>
+            <h3
+              className={`route-title ${
+                activeRoute === 0 ? "active-route" : ""
+              }`}
+              onClick={() => setActiveRoute(0)}
+            >
+              TRANG CHỦ
+            </h3>
           </Link>
           {categories.map((category) => (
             <Link
               key={category.id}
               to={{ pathname: `/products/${category.name}`, state: category }}
             >
-              <h3 className="route-title">{category.name.toUpperCase()}</h3>
+              <h3
+                className={`route-title ${
+                  activeRoute === category.id ? "active-route" : ""
+                }`}
+                onClick={() => setActiveRoute(category.id)}
+              >
+                {category.name.toUpperCase()}
+              </h3>
             </Link>
           ))}
         </Stack>

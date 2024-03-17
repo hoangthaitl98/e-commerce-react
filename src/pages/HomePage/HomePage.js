@@ -3,6 +3,8 @@ import { Fragment } from "react";
 import { Container, Grid, Typography } from "@mui/material";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import "./HomePage.scss";
+import ThemeButton from "../../components/Button/Button";
+import { Link } from "react-router-dom";
 
 function HomePage(props) {
   const { products, categories } = props;
@@ -26,6 +28,13 @@ function HomePage(props) {
               return <></>;
             })}
           </Grid>
+          <Link
+            to={{ pathname: `/products/${category.name}`, state: category }}
+          >
+            <ThemeButton className="btn-see">
+              Xem tất cả {category.name}
+            </ThemeButton>
+          </Link>
         </Container>
       ))}
     </Fragment>
