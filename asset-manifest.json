@@ -1,17 +1,24 @@
 {
   "files": {
-    "main.css": "/e-commerce-react/static/css/main.bac8ed7c.css",
-    "main.js": "/e-commerce-react/static/js/main.3faef348.js",
+    "main.css": "/e-commerce-react/static/css/main.e756975f.css",
+    "main.js": "/e-commerce-react/static/js/main.8612a605.js",
+    "static/media/payment_2.png": "/e-commerce-react/static/media/payment_2.4a456212c3c826ffd7e8.png",
+    "static/media/payment_1.png": "/e-commerce-react/static/media/payment_1.70d0efba50fba6717654.png",
     "static/media/revicons.eot": "/e-commerce-react/static/media/revicons.a77de540a38981833f9e.eot",
     "static/media/revicons.ttf": "/e-commerce-react/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/payment_3.png": "/e-commerce-react/static/media/payment_3.daea05d30c3c904255ff.png",
+    "static/media/social_instagram_icon.svg": "/e-commerce-react/static/media/social_instagram_icon.172f3110601af8ac10be678102bf065d.svg",
     "static/media/revicons.woff": "/e-commerce-react/static/media/revicons.e8746a624ed098489406.woff",
     "static/media/policy_image.svg": "/e-commerce-react/static/media/policy_image.406ab8f29bf03dceed6337dd9b811056.svg",
+    "static/media/social_shopee_icon.svg": "/e-commerce-react/static/media/social_shopee_icon.577662406e13ade791dffa17082b1e18.svg",
+    "static/media/social_youtube_icon.svg": "/e-commerce-react/static/media/social_youtube_icon.c02f061a017d59f5bb869b262ea07c07.svg",
+    "static/media/social_facebook_icon.svg": "/e-commerce-react/static/media/social_facebook_icon.29ee2ba24b6e36c10f6c22f262c25266.svg",
     "index.html": "/e-commerce-react/index.html",
-    "main.bac8ed7c.css.map": "/e-commerce-react/static/css/main.bac8ed7c.css.map",
-    "main.3faef348.js.map": "/e-commerce-react/static/js/main.3faef348.js.map"
+    "main.e756975f.css.map": "/e-commerce-react/static/css/main.e756975f.css.map",
+    "main.8612a605.js.map": "/e-commerce-react/static/js/main.8612a605.js.map"
   },
   "entrypoints": [
-    "static/css/main.bac8ed7c.css",
-    "static/js/main.3faef348.js"
+    "static/css/main.e756975f.css",
+    "static/js/main.8612a605.js"
   ]
 }
